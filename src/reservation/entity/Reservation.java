@@ -6,10 +6,15 @@
 package reservation.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -17,12 +22,34 @@ import javax.persistence.Id;
  */
 @Entity
 public class Reservation implements Serializable {
-
+    
+      public enum EtatReservation{
+        NON_VALIDE,
+        VALIDE,
+        TERMINE,
+        ANNULE
+    }
+  
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    
+    
+    @Temporal(TemporalType.DATE)
+    private Date dateDebut;
+  
+  @Temporal(TemporalType.DATE)
+    private Date dateFin;
+    
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date heureReservation;
+  
+  
+  
+   @Enumerated(EnumType.STRING)
+   private EtatReservation etat;
+ 
     public Long getId() {
         return id;
     }

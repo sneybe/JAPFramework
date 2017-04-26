@@ -7,6 +7,7 @@ package reservation.entity;
 
 import java.io.Serializable;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,19 +19,26 @@ import javax.persistence.Id;
  */
 @Entity
 public class Client implements Serializable {
-    @Column(length = 32,nullable = true)
-    private String nom;
-    @Column(length = 32,nullable = true)
-    private String prenom;
-    @Column(nullable = true)
-    private Integer age;
+    
     
     
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @Column(length = 32,nullable = false)
+    private String nom;
+    @Column(length = 32,nullable = false)
+    private String prenom;
+    @Column(nullable = true)
+    private Integer age;
 
+    
+    @Embedded
+    private Adresse adr;
+    
+    
     public Long getId() {
         return id;
     }

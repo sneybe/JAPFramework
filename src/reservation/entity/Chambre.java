@@ -19,14 +19,9 @@ import javax.persistence.Id;
 @Entity
 public class Chambre implements Serializable {
     
-    @Column(nullable = false,name = "price")
-    private Double prix;
+  
     
-    @Column(length = 4096)
-    private String description;
-    
-     @Column(unique = false,nullable = false,length = 32)
-    private String nom;
+   
     
     private static final long serialVersionUID = 1L;
     
@@ -34,6 +29,19 @@ public class Chambre implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+     @Column(nullable = false,name = "price")
+    private Double prix;
+    
+    @Column(length = 4096)
+    private String description;
+    
+     @Column(unique = false,nullable = false,length = 32)
+    private String nom;
+     
+     
+    
+     
+     
     public Long getId() {
         return id;
     }
