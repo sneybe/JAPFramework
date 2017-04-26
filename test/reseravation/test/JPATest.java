@@ -5,9 +5,11 @@
  */
 package reseravation.test;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import reservation.entity.Chambre;
 
 /**
  *
@@ -16,7 +18,16 @@ import static org.junit.Assert.*;
 public class JPATest {
    @Test 
 public void testjpa(){
-       Persistence.createEntityManagerFactory("PU").createEntityManager();
+     EntityManager en =  Persistence.createEntityManagerFactory("PU").createEntityManager();
+     Chambre c =new Chambre();
+     c.setNom("suite royale");
+     c.setPrix(20000.0);
+     c.setDescription("c'est magnifique ");
+     
+     en.getTransaction().begin();
+     
+     en.persist(c);
+     en.getTransaction().commit();
     
 }    
 }
