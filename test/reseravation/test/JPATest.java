@@ -22,13 +22,9 @@ import reservation.entity.Reservation;
  *
  * @author formation
  */
-
-
-
-
 public class JPATest {
-    
-   /* @Test
+
+    /* @Test
     public void ListerChambresHotelId(){
         EntityManagerFactory fact=Persistence.createEntityManagerFactory("PU");
         EntityManager en =fact.createEntityManager();
@@ -91,19 +87,25 @@ public void testjpa(){
      en.persist(c);
    
      en.getTransaction().commit();
-    */
-   @Test
-    public void testcli(){
-     Reservation  r = new Reservation();
-   
-    EntityManagerFactory enf = Persistence.createEntityManagerFactory("PU");
-    EntityManager en =enf.createEntityManager();
-    
-    en.getTransaction().begin();
-    
-    en.persist(r);
-    
-    en.getTransaction().commit();
-}
+     */
+//   @Test
+    public void testcli() {
+        Reservation r = new Reservation();
 
+        EntityManagerFactory enf = Persistence.createEntityManagerFactory("PU");
+        EntityManager en = enf.createEntityManager();
+
+        en.getTransaction().begin();
+
+        en.persist(r);
+
+        en.getTransaction().commit();
+    }
+
+    @Test
+    public void testreser() {
+ 
+     EntityManager en = Persistence.createEntityManagerFactory("PU").createEntityManager();
+     
+    }
 }

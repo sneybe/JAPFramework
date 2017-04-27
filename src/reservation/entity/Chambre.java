@@ -6,6 +6,7 @@
 package reservation.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -43,6 +45,22 @@ public class Chambre implements Serializable {
      @ManyToOne
      @JoinColumn(name = "hotel_id")
      private Hotel hotel;
+     
+     
+      @OneToMany(mappedBy="chambre") 
+      private HashSet<Reservation>reservation = new HashSet<>();
+
+      public HashSet<Reservation> getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(HashSet<Reservation> reservation) {
+        this.reservation = reservation;
+    }
+
+    
+     
+   
 
     public Double getPrix() {
         return prix;

@@ -7,6 +7,7 @@ package reservation.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -15,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -50,6 +52,20 @@ public class Reservation implements Serializable {
   @ManyToOne
   @JoinColumn(name = "client_id")
   private Client client;
+  
+     @ManyToOne
+     @JoinColumn(name = "chambre_id")
+     private Chambre chambre;
+
+    public Chambre getChambre() {
+        return chambre;
+    }
+
+    public void setChambre(Chambre chambre) {
+        this.chambre = chambre;
+    }
+
+    
 
     public Client getClient() {
         return client;
