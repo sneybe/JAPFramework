@@ -13,6 +13,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -44,8 +46,18 @@ public class Reservation implements Serializable {
     
   @Temporal(TemporalType.TIMESTAMP)
   private Date heureReservation;
-  
-  
+   
+  @ManyToOne
+  @JoinColumn(name = "client_id")
+  private Client client;
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
   
    @Enumerated(EnumType.STRING)
    private EtatReservation etat;

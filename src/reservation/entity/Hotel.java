@@ -6,12 +6,16 @@
 package reservation.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import static reservation.entity.Hotel_.chambre;
 
 /**
  *
@@ -33,13 +37,42 @@ public class Hotel implements Serializable {
     
     private String nom;
     
+   @OneToMany(mappedBy="hotel") 
+   private List<Chambre> chambre =new ArrayList<>();
+ 
     
   @Embedded
   private Adresse adr;
 
+    public List<Chambre> getChambre() {
+        return chambre;
+    }
+
+    public void setChambre(List<Chambre> chambre) {
+        this.chambre = chambre;
+    }
+
     public Long getId() {
         return id;
     }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public Adresse getAdr() {
+        return adr;
+    }
+
+    public void setAdr(Adresse adr) {
+        this.adr = adr;
+    }
+    
+    
 
     public void setId(Long id) {
         this.id = id;
@@ -68,6 +101,10 @@ public class Hotel implements Serializable {
     @Override
     public String toString() {
         return "reservation.entity.Hotel[ id=" + id + " ]";
+    }
+
+    public void setAdr() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
